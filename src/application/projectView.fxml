@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1215.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <tabs>
+      <Tab text="Information">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="778.0" prefWidth="1215.0" style="-fx-background-color: whitesmoke;">
+               <children>
+                  <MenuButton layoutX="14.0" layoutY="15.0" mnemonicParsing="false" text="Menu">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#updateTeamInfor" text="Update charts" />
+                        <MenuItem mnemonicParsing="false" onAction="#writeToDatabase" text="Write into database" />
+                     </items>
+                  </MenuButton>
+                  <GridPane layoutX="43.0" layoutY="62.0" prefHeight="149.0" prefWidth="355.0" style="-fx-background-color: snow; -fx-border-radius: 5; -fx-border-color: gray;">
+                     <children>
+                        <Label fx:id="projectID" text="-" GridPane.columnIndex="3" />
+                        <Label fx:id="projectTitle" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label fx:id="desc" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label fx:id="ownerID" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label fx:id="ranking" text="-" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Button fx:id="project1" mnemonicParsing="false" onAction="#showProjectMembers1" text="Project 1" GridPane.columnIndex="1" />
+                        <Button fx:id="project2" mnemonicParsing="false" onAction="#showProjectMembers2" text="Project 2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="project3" mnemonicParsing="false" onAction="#showProjectMembers3" text="Project 3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="project4" mnemonicParsing="false" onAction="#showProjectMembers4" text="Project 4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="project5" mnemonicParsing="false" onAction="#showProjectMembers5" text="Project 5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text=" Project ID :" GridPane.columnIndex="2" />
+                        <Label text=" Title :" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text=" Description :" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text=" OwnerID :" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label text=" Ranking :" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.0" minWidth="2.0" prefWidth="3.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.0" minWidth="0.0" prefWidth="48.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.0" minWidth="10.0" prefWidth="81.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="0.0" prefWidth="224.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <TableView fx:id="inforTable" layoutX="491.0" layoutY="62.0" prefHeight="143.0" prefWidth="670.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="studentID" prefWidth="30.0" text="ID" />
+                        <TableColumn fx:id="studentSkill" prefWidth="124.0" text="Skills" />
+                        <TableColumn fx:id="personality" prefWidth="76.0" text="Personality" />
+                        <TableColumn fx:id="conflict" prefWidth="65.0" text="Conflict" />
+                        <TableColumn fx:id="preferences" prefWidth="124.0" text="Preferences" />
+                        <TableColumn fx:id="competence" prefWidth="93.0" text="Competence" />
+                        <TableColumn fx:id="skillGpa" prefWidth="85.0" text="Skills gap" />
+                        <TableColumn fx:id="priority" prefWidth="72.0" text="Priority" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="693.0" layoutY="7.0" prefHeight="40.0" prefWidth="247.0" text=" Student Information ">
+                     <font>
+                        <Font name="Calibri Light Italic" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="93.0" layoutY="7.0" prefHeight="40.0" prefWidth="247.0" text="Project Information ">
+                     <font>
+                        <Font name="Calibri Light Italic" size="26.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="491.0" layoutY="211.0" prefHeight="40.0" prefWidth="119.0">
+                     <children>
+                        <Label fx:id="competency" prefHeight="17.0" prefWidth="116.0" text="Competency: " />
+                        <Label fx:id="overallSkillGap" text="Skill gap: " />
+                     </children>
+                  </VBox>
+                  <HBox layoutX="57.0" layoutY="445.0" prefHeight="332.0" prefWidth="1102.0">
+                     <children>
+                        <BarChart fx:id="bc1" prefHeight="308.0" prefWidth="397.0" title="Average Competency Level">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" fx:id="xaxis1" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id="yaxis1" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <BarChart fx:id="bc2" prefHeight="308.0" prefWidth="397.0" title="Skills Gap">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" fx:id="xaxis2" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id="yaxis2" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <BarChart fx:id="bc3" prefHeight="308.0" prefWidth="397.0" title="Pereference priority (%)">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" fx:id="xaxis3" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id="yaxis3" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                     </children>
+                  </HBox>
+                  <Label layoutX="57.0" layoutY="254.0" text="History">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="491.0" layoutY="285.0" prefHeight="149.0" prefWidth="355.0" style="-fx-background-color: snow; -fx-background-radius: 5; -fx-border-color: gray; -fx-border-radius: 5;">
+                     <children>
+                        <Label fx:id="suggestion" prefHeight="146.0" prefWidth="355.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label layoutX="491.0" layoutY="254.0" text="Message:">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="History" layoutX="43.0" layoutY="285.0" prefHeight="146.0" prefWidth="355.0" />
+                  <GridPane layoutX="940.0" layoutY="267.0" prefHeight="173.0" prefWidth="152.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#balanceCompentency" prefHeight="25.0" prefWidth="180.0" text="Balance competency" />
+                        <Button mnemonicParsing="false" onAction="#balanceGap" prefHeight="25.0" prefWidth="156.0" text="Balance gap" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#balancePriority" prefHeight="25.0" prefWidth="184.0" text="Balance priority" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#undo" prefHeight="25.0" prefWidth="167.0" text="Undo" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#autoBalance" prefHeight="25.0" prefWidth="227.0" text="AutoBalance" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#increasePriority" prefHeight="25.0" prefWidth="179.0" text="Increase priority" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Swap students">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <HBox layoutX="236.0" layoutY="145.0" prefHeight="199.0" prefWidth="743.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="165.0" prefWidth="149.0" style="-fx-background-color: pink; -fx-background-radius: 10;">
+                           <children>
+                              <Label fx:id="team1" text="Team 1  ">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="p1s1" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p1s2" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p1s3" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p1s4" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="165.0" prefWidth="149.0" style="-fx-background-color: gold; -fx-background-radius: 10;">
+                           <children>
+                              <Label fx:id="team2" text="Team 2  ">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="p2s1" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p2s2" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p2s3" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p2s4" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="165.0" prefWidth="149.0" style="-fx-background-color: palegreen; -fx-background-radius: 10;">
+                           <children>
+                              <Label fx:id="team3" text="Team 3  ">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="p3s1" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p3s2" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p3s3" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p3s4" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="165.0" prefWidth="149.0" style="-fx-background-color: aquamarine; -fx-background-radius: 10;">
+                           <children>
+                              <Label fx:id="team4" text="Team 4  ">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="p4s1" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p4s2" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p4s3" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p4s4" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="165.0" prefWidth="149.0" style="-fx-background-color: lavender; -fx-background-radius: 10;">
+                           <children>
+                              <Label fx:id="team5" text="Team 5  ">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="p5s1" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p5s2" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p5s3" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="p5s4" mnemonicParsing="false" onAction="#checkbox" text="CheckBox">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="433.0" layoutY="431.0" prefHeight="81.0" prefWidth="349.0">
+                     <children>
+                        <Label prefHeight="36.0" prefWidth="144.0" style="-fx-background-color: silver;" text="   Student ID  ">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="idBlank" prefHeight="35.0" prefWidth="142.0" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: snow;">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="swapping" mnemonicParsing="false" onAction="#swapstudents" prefHeight="35.0" prefWidth="61.0" text="Swap">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label layoutX="458.0" layoutY="92.0" prefHeight="35.0" prefWidth="299.0" text="Select two students to swap">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Query">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea fx:id="queryText" layoutX="98.0" layoutY="80.0" prefHeight="200.0" prefWidth="1020.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Label layoutX="99.0" layoutY="42.0" prefHeight="29.0" prefWidth="120.0" text="Query:">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="1026.0" layoutY="311.0" mnemonicParsing="false" onAction="#query" text="Submit">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <TextArea fx:id="resultText" layoutX="98.0" layoutY="454.0" prefHeight="200.0" prefWidth="1020.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Label layoutX="99.0" layoutY="416.0" prefHeight="29.0" prefWidth="120.0" text="Results:">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="915.0" layoutY="311.0" mnemonicParsing="false" onAction="#clearQuery" text="Clear">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+   </tabs>
+</TabPane>

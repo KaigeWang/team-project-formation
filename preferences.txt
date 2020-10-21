@@ -1,0 +1,40 @@
+S1
+Pr1 4 Pr2 3 Pr3 2 Pr4 1
+S2
+Pr2 4 Pr3 3 Pr4 2 Pr5 1
+S3
+Pr3 4 Pr4 3 Pr5 2 Pr6 1
+S4
+Pr4 4 Pr5 3 Pr6 2 Pr7 1
+S5
+Pr5 4 Pr6 3 Pr7 2 Pr8 1
+S6
+Pr6 4 Pr7 3 Pr8 2 Pr9 1
+S7
+Pr2 4 Pr4 3 Pr6 2 Pr8 1
+S8
+Pr8 4 Pr9 3 Pr3 2 Pr1 1
+S9
+Pr5 4 Pr6 3 Pr8 2 Pr9 1
+S10
+Pr3 4 Pr5 3 Pr1 2 Pr7 1
+S11
+Pr10 4 Pr9 3 Pr5 2 Pr1 1
+S12
+Pr9 4 Pr4 3 Pr3 2 Pr2 1
+S13
+Pr5 4 Pr3 3 Pr9 2 Pr10 1
+S14
+Pr5 4 Pr1 3 Pr10 2 Pr8 1
+S15
+Pr10 4 Pr1 3 Pr5 2 Pr6 1
+S16
+Pr3 4 Pr5 3 Pr7 2 Pr9 1
+S17
+Pr1 4 Pr2 3 Pr3 2 Pr4 1
+S18
+Pr9 4 Pr6 3 Pr7 2 Pr10 1
+S19
+Pr9 4 Pr8 3 Pr7 2 Pr6 1
+S20
+Pr10 4 Pr9 3 Pr8 2 Pr7 1
